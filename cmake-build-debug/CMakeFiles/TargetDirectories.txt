@@ -1,0 +1,3 @@
+/home/tin/CLionProjects/discrete_optimization/cmake-build-debug/CMakeFiles/discrete_optimization.dir
+/home/tin/CLionProjects/discrete_optimization/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/tin/CLionProjects/discrete_optimization/cmake-build-debug/CMakeFiles/rebuild_cache.dir
