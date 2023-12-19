@@ -55,6 +55,12 @@ build CMakeFiles/discrete_optimization.dir/main.cpp.o: CXX_COMPILER__discrete_op
   OBJECT_DIR = CMakeFiles/discrete_optimization.dir
   OBJECT_FILE_DIR = CMakeFiles/discrete_optimization.dir
 
+build CMakeFiles/discrete_optimization.dir/02_knapsack/solver.cpp.o: CXX_COMPILER__discrete_optimization_unscanned_Debug /home/tin/CLionProjects/discrete_optimization/02_knapsack/solver.cpp || cmake_object_order_depends_target_discrete_optimization
+  DEP_FILE = CMakeFiles/discrete_optimization.dir/02_knapsack/solver.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/discrete_optimization.dir
+  OBJECT_FILE_DIR = CMakeFiles/discrete_optimization.dir/02_knapsack
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target discrete_optimization
@@ -63,7 +69,7 @@ build CMakeFiles/discrete_optimization.dir/main.cpp.o: CXX_COMPILER__discrete_op
 #############################################
 # Link the executable discrete_optimization
 
-build discrete_optimization: CXX_EXECUTABLE_LINKER__discrete_optimization_Debug CMakeFiles/discrete_optimization.dir/main.cpp.o
+build discrete_optimization: CXX_EXECUTABLE_LINKER__discrete_optimization_Debug CMakeFiles/discrete_optimization.dir/main.cpp.o CMakeFiles/discrete_optimization.dir/02_knapsack/solver.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/discrete_optimization.dir
   POST_BUILD = :
