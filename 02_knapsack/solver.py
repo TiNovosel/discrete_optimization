@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from collections import namedtuple
+
+import numpy as np
+
 Item = namedtuple("Item", ['index', 'value', 'weight'])
 
 def solve_it(input_data):
@@ -21,23 +24,42 @@ def solve_it(input_data):
         parts = line.split()
         items.append(Item(i-1, int(parts[0]), int(parts[1])))
 
+    # print(items[0])
     # a trivial algorithm for filling the knapsack
     # it takes items in-order until the knapsack is full
-    value = 0
-    weight = 0
-    taken = [0]*len(items)
+    # value = 0
+    # weight = 0
+    # taken = [0]*len(items)
 
-    for item in items:
-        if weight + item.weight <= capacity:
-            taken[item.index] = 1
-            value += item.value
-            weight += item.weight
-    
+    dp_matrix = np.zeros((len(items)+1, capacity+1))
+
+    for i in range(1, len(items)+1):
+        for c in range(capacity+1):
+            if items[i-1].weight > c:
+                dp_matrix[i][c] = dp_matrix[i-1][c]
+            else:
+                dp_matrix[i][c] = max(dp_matrix[i-1][c], dp_matrix[i-1][c-items[i-1].weight]+items[i-1].value)
+
+
+    remain_capacity = capacity
+    index_list = [0]*len(items)
+
+    for i in range(0, len(items))[::-1]:
+        if(items[i].weight <= remain_capacity) and (dp_matrix[i][int(remain_capacity - items[i].weight)]+ items[i].value >= dp_matrix[i][int(remain_capacity)]):
+            index_list[items[i].index] = 1
+            remain_capacity -= items[i].weight
+        else:
+            pass
+
+    # print(dp_matrix)
+
+    value = int(dp_matrix[-1][-1])
+
     # prepare the solution in the specified output format
     output_data = str(value) + ' ' + str(0) + '\n'
-    output_data += ' '.join(map(str, taken))
-    return output_data
+    output_data += ' '.join(map(str, index_list))
 
+    return output_data
 
 if __name__ == '__main__':
     import sys
